@@ -1,0 +1,2 @@
+2022/02/17 17:01:31 [emerg] 10732#12012: CreateFile() "D:\myCode\c\src\cmake-build-debug/conf/mime.types" failed (2: The system cannot find the file specified) in D:\myCode\c\src\cmake-build-debug/conf/nginx.conf:19
+2022/02/17 17:02:10 [emerg] 9060#8636: CreateDirectory() "D:\myCode\c\src\cmake-build-debug/temp/client_body_temp" failed (3: The system cannot find the path specified)

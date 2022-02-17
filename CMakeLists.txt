@@ -1,0 +1,159 @@
+cmake_minimum_required(VERSION 3.14)
+project(nginx C)
+
+set(CMAKE_C_STANDARD 11)
+
+include_directories(.)
+include_directories(core)
+include_directories(event)
+include_directories(event/modules)
+include_directories(http)
+include_directories(http/modules)
+include_directories(os/win32)
+
+add_executable(nginx
+        core/nginx.c
+        core/ngx_array.c
+        core/ngx_buf.c
+        core/ngx_conf_file.c
+        core/ngx_connection.c
+        core/ngx_cpuinfo.c
+        core/ngx_crc32.c
+        core/ngx_crypt.c
+        core/ngx_cycle.c
+        core/ngx_file.c
+        core/ngx_hash.c
+        core/ngx_inet.c
+        core/ngx_list.c
+        core/ngx_log.c
+        core/ngx_md5.c
+        core/ngx_module.c
+        core/ngx_murmurhash.c
+        core/ngx_open_file_cache.c
+        core/ngx_output_chain.c
+        core/ngx_palloc.c
+        core/ngx_parse.c
+        core/ngx_parse_time.c
+        core/ngx_proxy_protocol.c
+        core/ngx_queue.c
+        core/ngx_radix_tree.c
+        core/ngx_rbtree.c
+        core/ngx_resolver.c
+        core/ngx_rwlock.c
+        core/ngx_sha1.c
+        core/ngx_shmtx.c
+        core/ngx_slab.c
+        core/ngx_spinlock.c
+        core/ngx_string.c
+        core/ngx_syslog.c
+        core/ngx_times.c
+        event/modules/ngx_iocp_module.c
+        event/modules/ngx_win32_poll_module.c
+        event/modules/ngx_win32_select_module.c
+        event/ngx_event.c
+        event/ngx_event_accept.c
+        event/ngx_event_acceptex.c
+        event/ngx_event_connect.c
+        event/ngx_event_pipe.c
+        event/ngx_event_posted.c
+        event/ngx_event_timer.c
+        event/ngx_event_udp.c
+        http/modules/ngx_http_access_module.c
+        http/modules/ngx_http_addition_filter_module.c
+        http/modules/ngx_http_auth_basic_module.c
+        http/modules/ngx_http_auth_request_module.c
+        http/modules/ngx_http_autoindex_module.c
+        http/modules/ngx_http_browser_module.c
+        http/modules/ngx_http_charset_filter_module.c
+        http/modules/ngx_http_chunked_filter_module.c
+        http/modules/ngx_http_dav_module.c
+        http/modules/ngx_http_empty_gif_module.c
+        http/modules/ngx_http_fastcgi_module.c
+        http/modules/ngx_http_flv_module.c
+        http/modules/ngx_http_headers_filter_module.c
+        http/modules/ngx_http_index_module.c
+        http/modules/ngx_http_limit_conn_module.c
+        http/modules/ngx_http_limit_req_module.c
+        http/modules/ngx_http_log_module.c
+        http/modules/ngx_http_map_module.c
+        http/modules/ngx_http_memcached_module.c
+        http/modules/ngx_http_mirror_module.c
+        http/modules/ngx_http_mp4_module.c
+        http/modules/ngx_http_not_modified_filter_module.c
+        http/modules/ngx_http_proxy_module.c
+        http/modules/ngx_http_random_index_module.c
+        http/modules/ngx_http_range_filter_module.c
+        http/modules/ngx_http_realip_module.c
+        http/modules/ngx_http_referer_module.c
+        http/modules/ngx_http_scgi_module.c
+        http/modules/ngx_http_secure_link_module.c
+        http/modules/ngx_http_slice_filter_module.c
+        http/modules/ngx_http_split_clients_module.c
+        http/modules/ngx_http_ssi_filter_module.c
+        http/modules/ngx_http_ssi_filter_module.h
+        http/modules/ngx_http_static_module.c
+        http/modules/ngx_http_stub_status_module.c
+        http/modules/ngx_http_sub_filter_module.c
+        http/modules/ngx_http_try_files_module.c
+        http/modules/ngx_http_upstream_hash_module.c
+        http/modules/ngx_http_upstream_ip_hash_module.c
+        http/modules/ngx_http_upstream_keepalive_module.c
+        http/modules/ngx_http_upstream_least_conn_module.c
+        http/modules/ngx_http_upstream_random_module.c
+        http/modules/ngx_http_upstream_zone_module.c
+        http/modules/ngx_http_userid_filter_module.c
+        http/modules/ngx_http_uwsgi_module.c
+        http/ngx_http.c
+        http/ngx_http_copy_filter_module.c
+        http/ngx_http_core_module.c
+        http/ngx_http_file_cache.c
+        http/ngx_http_header_filter_module.c
+        http/ngx_http_parse.c
+        http/ngx_http_postpone_filter_module.c
+        http/ngx_http_request.c
+        http/ngx_http_request_body.c
+        http/ngx_http_script.c
+        http/ngx_http_special_response.c
+        http/ngx_http_upstream.c
+        http/ngx_http_upstream_round_robin.c
+        http/ngx_http_variables.c
+        http/ngx_http_write_filter_module.c
+        os/win32/ngx_alloc.c
+        os/win32/ngx_dlopen.c
+        os/win32/ngx_errno.c
+        os/win32/ngx_event_log.c
+        os/win32/ngx_files.c
+        os/win32/ngx_os.h
+        os/win32/ngx_process.c
+        os/win32/ngx_process_cycle.c
+        os/win32/ngx_shmem.c
+        os/win32/ngx_socket.c
+        os/win32/ngx_stat.c
+        os/win32/ngx_thread.c
+        os/win32/ngx_time.c
+        os/win32/ngx_udp_wsarecv.c
+        os/win32/ngx_user.c
+        os/win32/ngx_win32_init.c
+        os/win32/ngx_wsarecv.c
+        os/win32/ngx_wsarecv_chain.c
+        os/win32/ngx_wsasend.c
+        os/win32/ngx_wsasend_chain.c
+        ngx_auto_config.h
+        ngx_auto_headers.h
+        ngx_modules.c
+        )
+#event/ngx_event_connectex.c
+#http/modules/ngx_http_degradation_module.c
+#http/modules/ngx_http_geo_module.c
+#http/modules/ngx_http_geoip_module.c
+#http/modules/ngx_http_grpc_module.c
+#http/modules/ngx_http_gunzip_filter_module.c
+#http/modules/ngx_http_gzip_filter_module.c
+#http/modules/ngx_http_gzip_static_module.c
+#http/modules/ngx_http_image_filter_module.c
+#http/modules/ngx_http_rewrite_module.c
+#http/modules/ngx_http_ssl_module.c
+#http/modules/ngx_http_xslt_filter_module.c
+# os/win32/ngx_service.c
+
+target_link_libraries(nginx  ws2_32)
